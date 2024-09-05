@@ -1,0 +1,55 @@
+'use client';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Header from './Header';
+
+const Hero = () => {
+  const { scrollY } = useScroll();
+
+  const imgTopPosition = useTransform(scrollY, [0, 400], ['480px', '240px']);
+
+  const imgScale = useTransform(scrollY, [0, 200, 1300], [1, 1.4, 1]);
+  const textOpacity = useTransform(scrollY, [0, 200], [1, 0]);
+  const textScale = useTransform(scrollY, [0, 200], [1, 0.8]);
+  const textDisplay = useTransform(scrollY, [0, 800], ['flex', 'none']);
+  return (
+    <section className='h-screen overflow-x-clip relative xl:h-[1600px]'>
+      <Header />
+      <div className='container mx-auto h-full flex items-center xl:items-start border-2 border-lime-300'>
+        {/* text */}
+        <motion.div
+          className='border-2 border-pink-500  flex flex-col items-center gap-6 text-center fixed left-0 right-0 mt-24 xl:mt-[160px]'
+          style={{
+            opacity: textOpacity,
+            scale: textScale,
+            display: textDisplay,
+          }}
+        >
+          <h1 className='text-[60px] font-bold tracking-[-0.5px] leading-none max-w-[800px] xl:max-w-max '>
+            Boost Your Productivity Instantly
+          </h1>
+          <p className='max-w-[680px] text-[20px] text-white/80 font-light px-8 mb-2 xl:px-0'>
+            Streamline tasks and manage your time effortlessly with our
+            powerful, intuitive, all in one productivity platform.
+          </p>
+          <button>Join today</button>
+        </motion.div>
+        {/* img */}
+        <motion.div
+          className='hidden w-full xl:flex bg-orange-400 max-w-[960px] mx-auto h-[520px] bg-no-repeat 
+        sticky left-0 right-0'
+          style={{
+            backgroundImage: "url('/hero/img.svg')",
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            top: imgTopPosition,
+            scale: imgScale,
+          }}
+        >
+          image
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
