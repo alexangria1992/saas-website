@@ -58,7 +58,7 @@ const Features = () => {
 
   return (
     <section className='text-white pt-32 relative'>
-      <div className='container mx-auto border-2 border-lime-300'>
+      <div className='container mx-auto'>
         <div className='flex gap-16'>
           {/* img */}
           <motion.div
@@ -92,13 +92,13 @@ const Features = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ amount: 'all' }}
                   key={itemIndex}
-                  className='border-2 border-cyan-400 w-full xl:h-[480px] flex items-center'
+                  className=' w-full h-auto xl:h-[480px] flex items-center'
                 >
-                  <div className='border-2 border-yellow-300 xl:w-auto mx-auto xl:mx-0'>
+                  <div className=' w-[80vw] xl:w-auto mx-auto xl:mx-0'>
                     <h2 className='h2 mb-4'>{item.title}</h2>
                     <p className='lead mb-8 '>{item.description}</p>
                     {/* highlights */}
-                    <div className='flex flex-col gap-5 border-2 border-pink-400'>
+                    <div className='flex flex-col gap-5 '>
                       {item.highlights.map((highlight, index) => {
                         return (
                           <div key={index} className='flex items-center gap-4'>
